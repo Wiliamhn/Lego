@@ -43,7 +43,7 @@
                                     </h5>
                                 </td>
                                 <td class="p-title first-row">
-                                    ${{array_sum(array_column($order->orderDetails->toArray(), 'total'))}}
+                                   {{ number_format(array_sum(array_column($order->orderDetails->toArray(), 'total')), 0, ',', '.') }}đ
                                 </td>
                                 <td class="first-row">
                                     <a class="btn" href="./account/my-order/{{$order->id }}" >Chi tiết</a>

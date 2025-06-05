@@ -56,7 +56,7 @@
         Product Slider
     --------------------*/
    $(".product-slider").owlCarousel({
-        loop: true,
+        loop: false,
         margin: 25,
         nav: true,
         items: 4,
@@ -414,3 +414,53 @@ function changeQuantity(rowId, action) {
 
     updateCart(rowId, newQty); // Gọi hàm cập nhật giỏ hàng sau khi thay đổi số lượng
 }
+
+
+const all_product_items = {
+    lego: $(".product-slider.lego .product-item"),
+    gundam: $(".product-slider.gundam .product-item")
+};
+
+const product_wrapper = {
+    lego: $(".product-slider.lego"),
+    gundam: $(".product-slider.gundam")
+};
+
+// Cấu hình Owl Carousel chung
+const owlOptions = {
+    items: 3,
+    margin: 30,
+    loop: false,
+    nav: true,
+    dots: false
+};
+
+// Gán sự kiện lọc
+$('.filter-control').on('click', '.item', function () {
+    const $item = $(this);
+    const filter = $item.data('tag');
+    const category = $item.data('category');
+
+    $item.siblings().removeClass('active');
+    $item.addClass('active');
+
+    if (product_wrapper[category] && all_product_items[category]) {
+        const wrapper = product_wrapper[category];
+        const allItems = all_product_items[category];
+
+        // Hủy carousel cũ
+        wrapper.trigger('destroy.owl.carousel');
+
+        // Xóa toàn bộ item hiện tại
+        wrapper.html('');
+
+        // Lọc item
+        const filteredItems = (filter === '*') ? allItems : allItems.filter(filter);
+
+        // Thêm item mới
+        wrapper.append(filteredItems);
+
+        // Khởi tạo lại carousel
+        wrapper.owlCarousel(owlOptions);
+    }
+});

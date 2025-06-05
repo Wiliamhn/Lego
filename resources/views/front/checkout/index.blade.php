@@ -11,7 +11,7 @@
                 @if(Cart::count() > 0)
                 <div class="col-lg-6">
                     <div class="checkout-content">
-                        <a href="#" class="content-btn">Click Here To Login</a>
+                        <a href="#" class="content-btn">Lego shop</a>
                     </div>
                     <h4>Chi tiết đơn hàng</h4>
                     <div class="row">
@@ -76,12 +76,12 @@
                                 @foreach($carts as $cart)
                                 <li class="fw-normal">
                                      {{$cart->name}} x {{$cart->qty}}
-                                    <span>${{$cart->price * $cart->qty}}</span>
+                                    <span>{{ number_format($cart->price * $cart->qty, 0, ',', '.') }}đ</span>
                                 </li>
                                 @endforeach
 
-                                <li class="fw-normal">Tổng phụ <span>${{$subtotal}}</span></li>
-                                <li class="total-price">Thành tiền <span>${{$total}}</span></li>
+                                <li class="fw-normal">Tổng phụ <span>{{$subtotal}}đ</span></li>
+                                <li class="total-price">Thành tiền <span>{{$total}}đ</span></li>
                             </ul>
                             <div class="payment-check">
                                 <div class="pc-item">
@@ -101,11 +101,12 @@
                             </div>
 
                             <div class="order-btn">
-                                <button type="submit" class="site-btn place-btn">Place Order</button>
+                                <button type="submit" class="site-btn place-btn">Thanh toán</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 @else
                     <div class="col-lg-12">
                         <h4 style="margin-top: 50px"> Không có sản phẩm nào.</h4>

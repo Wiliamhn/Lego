@@ -93,7 +93,7 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="text-center">${{$product->price}}</td>
+                                                <td class="text-center">{{ number_format($product->price, 0, ',', '.') }} ₫</td>
                                                 <td class="text-center">{{$product->qty}}</td>
                                                 <td class="text-center">
                                                     <div class="badge badge-success mt-2">

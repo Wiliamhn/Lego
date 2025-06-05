@@ -10,5 +10,6 @@ interface ProductRepositoryInterface extends RepositoriesInterface
     public function getFeaturedProductsByCategory(int $categoryId);
     public function getProductOnIndex($request);
     public function getProductsByCategory($categoryName, $request);
+    public function getProductsByBrand($brandName, $request);
 
 }

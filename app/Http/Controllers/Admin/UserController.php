@@ -20,10 +20,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = $this->userService->all();
-
+        $users = $this->userService->searchAndPagination('name', $request->get('search'));
         return view('admin.user.index', compact('users'));
     }
 

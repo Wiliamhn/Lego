@@ -80,12 +80,12 @@
                                     @foreach($order->orderDetails as $orderDetail)
                                     <li class="fw-normal">
                                         {{$orderDetail->product->name}} x {{$orderDetail->qty}}
-                                        <span>${{$orderDetail->total}}</span>
+                                        <span>{{ number_format($orderDetail->total, 0, ',', '.') }}đ</span>
                                     </li>
                                     @endforeach
                                     <li class="total-price">
                                         Tổng tiền
-                                        <span>${{array_sum(array_column($order->orderDetails->toArray(), 'total'))}}</span>
+                                        <span>{{ number_format(array_sum(array_column($order->orderDetails->toArray(), 'total')), 0, ',', '.') }}đ</span>
                                     </li>
                                 </ul>
                                 <div class="payment-check">

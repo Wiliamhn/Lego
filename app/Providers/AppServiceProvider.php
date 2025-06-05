@@ -20,6 +20,10 @@ use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Service\Blog\BlogService;
 use App\Service\Blog\BlogServiceInterface;
+use App\Service\blogComment\blogCommentService;
+use App\Service\blogComment\blogCommentServiceInterface;
+use App\Repositories\blogComment\blogCommentRepository;
+use App\Repositories\blogComment\blogCommentRepositoryInterface;
 use App\Service\Brand\BrandService;
 use App\Service\Brand\BrandServiceInterface;
 use App\Service\Order\OrderService;
@@ -34,7 +38,27 @@ use App\Service\ProductComment\ProductCommentService;
 use App\Service\ProductComment\ProductCommentServiceInterface;
 use App\Service\User\UserService;
 use App\Service\User\UserServiceInterface;
+use App\Repositories\DiscountCode\DiscountCodeRepository;
+use App\Repositories\DiscountCode\DiscountCodeRepositoryInterface;
+use App\Service\DiscountCode\DiscountCodeService;
+use App\Service\DiscountCode\DiscountCodeServiceInterface;
+use App\Repositories\ProductView\ProductViewRepository;
+use App\Repositories\ProductView\ProductViewRepositoryInterface;
+use App\Service\ProductView\ProductViewService;
+use App\Service\ProductView\ProductViewServiceInterface;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\Supplier\SupplierRepository;
+use App\Repositories\Supplier\SupplierRepositoryInterface;
+use App\Service\Supplier\SupplierService;
+use App\Service\Supplier\SupplierServiceInterface;
+use App\Repositories\ImportInvoice\ImportInvoiceRepository;
+use App\Repositories\ImportInvoice\ImportInvoiceRepositoryInterface;
+use App\Service\ImportInvoice\ImportInvoiceService;
+use App\Service\ImportInvoice\ImportInvoiceServiceInterface;
+use App\Repositories\ImportInvoiceDetail\ImportInvoiceDetailRepository;
+use App\Repositories\ImportInvoiceDetail\ImportInvoiceDetailRepositoryInterface;
+use App\Service\ImportInvoiceDetail\ImportInvoiceDetailService;
+use App\Service\ImportInvoiceDetail\ImportInvoiceDetailServiceInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -65,6 +89,16 @@ class AppServiceProvider extends ServiceProvider
             ProductCommentServiceInterface::class,
             ProductCommentService::class
         );
+
+        //ProductView
+        $this->app->singleton(
+            ProductViewRepositoryInterface::class,
+            ProductViewRepository::class
+        );
+        $this->app->singleton(
+            ProductViewServiceInterface::class,
+            ProductViewService::class
+        );
         //Blogs
         $this->app->singleton(
             BlogRepositoryInterface::class,
@@ -74,6 +108,16 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             BlogServiceInterface::class,
             BlogService::class
+        );
+        //BlogComment
+         $this->app->singleton(
+            BlogCommentRepositoryInterface::class,
+            BlogCommentRepository::class
+        );
+
+        $this->app->singleton(
+            BlogCommentServiceInterface::class,
+            BlogCommentService::class
         );
         //ProductCategory
         $this->app->singleton(
@@ -105,6 +149,33 @@ class AppServiceProvider extends ServiceProvider
             OrderDetailServiceInterface::class,
             OrderDetailService::class
         );
+               //Supplier
+        $this->app->singleton(
+            SupplierRepositoryInterface::class,
+            SupplierRepository::class
+        );
+        $this->app->singleton(
+            SupplierServiceInterface::class,
+            SupplierService::class
+        );
+            //ImportInvoice
+        $this->app->singleton(
+            ImportInvoiceRepositoryInterface::class,
+            ImportInvoiceRepository::class
+        );
+        $this->app->singleton(
+            ImportInvoiceServiceInterface::class,
+            ImportInvoiceService::class
+        );
+         //ImportInvoiceDetail
+        $this->app->singleton(
+            ImportInvoiceDetailRepositoryInterface::class,
+            ImportInvoiceDetailRepository::class
+        );
+        $this->app->singleton(
+            ImportInvoiceDetailServiceInterface::class,
+            ImportInvoiceDetailService::class
+        );
         //User
         $this->app->singleton(
             UserRepositoryInterface::class,
@@ -125,7 +196,14 @@ class AppServiceProvider extends ServiceProvider
             BrandServiceInterface::class,
             BrandService::class
         );
-
+        $this->app->singleton(
+            DiscountCodeRepositoryInterface::class,
+            DiscountCodeRepository::class
+        );
+        $this->app->singleton(
+            DiscountCodeServiceInterface::class,
+            DiscountCodeService::class
+        );
 
 
     }

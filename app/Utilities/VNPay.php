@@ -12,10 +12,12 @@ class VNPay
      * config.php
      *
      */
-    static $vnp_TmnCode = "SSDBUHTZ"; //Mã website tại VNPAY
-    static $vnp_HashSecret = "VNMWSVNLUBCWUXULMWJETAXYERDRCBRM"; //Chuỗi bí mật
-    static $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+    static $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
     static $vnp_Returnurl = "/checkout/vnPayCheck"; //Chú ý cấu hình env('APP_URL') khi sử dụng biến này.
+    static $vnp_TmnCode = "CPEXO26G"; //Mã website tại VNPAY
+    static $vnp_HashSecret = "IEX7XWHHF1OPC9DWJUB1Y80OQGVGAYTX"; //Chuỗi bí mật
+
+
 
     /**
      * vnpay_create_payment.php
@@ -34,21 +36,13 @@ class VNPay
     public static function vnpay_create_payment(array $data)
     {
         error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
-        /**
-         * Description of vnpay_ajax
-         *
-         * @author xonv
-         */
-        //require_once("./config.php");
 
-        $vnp_TxnRef = $data['vnp_TxnRef']; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        // Lấy các tham số
+        $vnp_TxnRef = $data['vnp_TxnRef']; // Mã đơn hàng duy nhất
         $vnp_OrderInfo = $data['vnp_OrderInfo'];
-        $vnp_OrderType = 100000; // Loại hàng hóa: Thực Phẩm - Tiêu Dùng (Xem thêm mã tại: https://sandbox.vnpayment.vn/apis/docs/loai-hang-hoa)
-        $vnp_Amount = $data['vnp_Amount'] * 100;
-        $vnp_Locale = 'vn'; //Ngôn ngữ tiếng việt
-//        $vnp_BankCode = $_POST['bank_code'];
-//        $vnp_BankCode = 'NCB';
-        $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
+        $vnp_Amount = $data['vnp_Amount'] * 100; // VNPay yêu cầu số tiền phải nhân với 100
+        $vnp_Locale = 'vn'; // Ngôn ngữ
+        $vnp_IpAddr = $_SERVER['REMOTE_ADDR']; // Địa chỉ IP
 
         $inputData = array(
             "vnp_Version" => "2.0.0",
@@ -56,20 +50,24 @@ class VNPay
             "vnp_Amount" => $vnp_Amount,
             "vnp_Command" => "pay",
             "vnp_CreateDate" => date('YmdHis'),
-            "vnp_CurrCode" => "VND", //Đơn vị tiền tệ (Phiên bản đang dùng chỉ hỗ trợ VND)
+            "vnp_CurrCode" => "VND", // Đơn vị tiền tệ VNPay yêu cầu
             "vnp_IpAddr" => $vnp_IpAddr,
             "vnp_Locale" => $vnp_Locale,
             "vnp_OrderInfo" => $vnp_OrderInfo,
-            "vnp_OrderType" => $vnp_OrderType,
+            "vnp_OrderType" => 100000, // Loại đơn hàng (có thể thay đổi tùy vào yêu cầu)
             "vnp_ReturnUrl" => env('APP_URL') . self::$vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
         );
 
-        //thêm 'vnp_BankCode'
-        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
-            $inputData['vnp_BankCode'] = $vnp_BankCode;
+        // Nếu có mã ngân hàng, thêm vào
+        if (isset($data['vnp_BankCode']) && $data['vnp_BankCode'] != "") {
+            $inputData['vnp_BankCode'] = $data['vnp_BankCode'];
         }
+
+        // Sắp xếp các tham số theo thứ tự bảng chữ cái
         ksort($inputData);
+
+        // Chuỗi hash
         $query = "";
         $i = 0;
         $hashdata = "";
@@ -83,21 +81,15 @@ class VNPay
             $query .= urlencode($key) . "=" . urlencode($value) . '&';
         }
 
-        //thêm 'vnp_SecureHashType' & 'vnp_SecureHash'
+        // Tính toán chữ ký bảo mật
         $vnp_Url = self::$vnp_Url . "?" . $query;
-        if (isset(self::$vnp_HashSecret)) {
-            $vnpSecureHash = hash('sha256', self::$vnp_HashSecret . $hashdata);
-            $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
-        }
+        $vnpSecureHash = hash_hmac('sha512', $hashdata, self::$vnp_HashSecret);
+        $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
 
-        $returnData = array('code' => '00'
-        , 'message' => 'success'
-        , 'data' => $vnp_Url);
-
-        //echo json_encode($returnData);
-
-        return $returnData['data']; //chỉ lấy ra $vnp_Url thôi.
+        return $vnp_Url; // Trả về URL đầy đủ
     }
+
+
 }
 
 // Thẻ test:

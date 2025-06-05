@@ -6,7 +6,7 @@ class Constant
 {
     // Các hằng số role dùng chung toàn bộ hệ thống
 
-    //Oder
+    //Order
     const order_status_ReceiveOrders = 1;
     const order_status_Unconfirmed = 2;
     const order_status_Confirmed = 3;
@@ -15,15 +15,16 @@ class Constant
     const order_status_Shipping = 6;
     const order_status_Finish = 7;
     const order_status_Cancel = 0;
+    
     public static $order_status = [
-        self::order_status_ReceiveOrders => 'Receive Orders',
-        self::order_status_Unconfirmed => 'Unconfirmed',
-        self::order_status_Confirmed => 'Confirmed',
-        self::order_status_Paid => 'Paid',
-        self::order_status_Processing => 'Processing',
-        self::order_status_Shipping => 'Shipping',
-        self::order_status_Finish =>'Finish',
-        self::order_status_Cancel => 'Cancel',
+        self::order_status_ReceiveOrders => 'Đã nhận đơn',
+        self::order_status_Unconfirmed => 'Chưa xác nhận',
+        self::order_status_Confirmed => 'Đã xác nhận',
+        self::order_status_Paid => 'Đã thanh toán',
+        self::order_status_Processing => 'Đang xử lý',
+        self::order_status_Shipping => 'Đang giao hàng',
+        self::order_status_Finish => 'Hoàn tất',
+        self::order_status_Cancel => 'Đã hủy',
     ];
 
     //User

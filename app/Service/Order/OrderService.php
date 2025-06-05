@@ -16,4 +16,12 @@ class OrderService extends BaseService implements OrderServiceInterface
     {
         return $this->repository->getOrderByUserId($userId);
     }
+    public function getBestSellingProducts($timeFrame)
+    {
+        return $this->repository->getBestSellingProducts($timeFrame);
+    }
+    public function getTopCustomersByRevenue($timeFrame, $search)
+    {
+        return $this->repository->getTopCustomersByRevenue($timeFrame, $search);
+    }
 }

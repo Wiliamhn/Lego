@@ -35,9 +35,8 @@ class ProductService extends BaseService implements ProductServiceInterface
     public function getFeaturedProducts()
     {
         return[
-            "ninja"=>$this->repository->getFeaturedProductsByCategory(1),
-            "cars" => $this->repository->getFeaturedProductsByCategory(2),
-            "superhero" => $this->repository->getFeaturedProductsByCategory(3),
+            "lego"=>$this->repository->getFeaturedProductsByCategory(1),
+            "gundam" => $this->repository->getFeaturedProductsByCategory(2),
         ];
     }
     public function getProductOnIndex($request){
@@ -45,5 +44,8 @@ class ProductService extends BaseService implements ProductServiceInterface
     }
     public function getProductsByCategory($categoryName,$request){
         return $this->repository->getProductsByCategory($categoryName,$request);
+    }
+     public function getProductsByBrand($brandName,$request){
+        return $this->repository->getProductsByBrand($brandName,$request);
     }
 }

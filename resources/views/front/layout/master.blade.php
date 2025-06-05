@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <base href="{{asset('/')}}">
+	<base href="{{asset('/')}}">
 	<title>@yield('title')</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="front/front/images/icons/favicon.png"/>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="front/front/images/icons/favicon.png" />
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/vendor/animate/animate.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/vendor/slick/slick.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/vendor/MagnificPopup/magnific-popup.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="front/css/util.css">
 	<link rel="stylesheet" type="text/css" href="front/css/main.css">
-<!--===============================================================================================-->
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-<link rel="stylesheet" href="front1/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="front1/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="front1/css/themify-icons.css" type="text/css">
-    <link rel="stylesheet" href="front1/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="front1/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="front1/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="front1/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="front1/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="front1/css/style.css" type="text/css">
+	<!--===============================================================================================-->
+	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="front1/css/bootstrap.min.css" type="text/css">
+	<link rel="stylesheet" href="front1/css/font-awesome.min.css" type="text/css">
+	<link rel="stylesheet" href="front1/css/themify-icons.css" type="text/css">
+	<link rel="stylesheet" href="front1/css/elegant-icons.css" type="text/css">
+	<link rel="stylesheet" href="front1/css/owl.carousel.min.css" type="text/css">
+	<link rel="stylesheet" href="front1/css/nice-select.css" type="text/css">
+	<link rel="stylesheet" href="front1/css/jquery-ui.min.css" type="text/css">
+	<link rel="stylesheet" href="front1/css/slicknav.min.css" type="text/css">
+	<link rel="stylesheet" href="front1/css/style.css" type="text/css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-dyD8QgJG0q5E7VdpJbhW4Gk96L+jWrBy9KjF3JfJZDqx1PMkwTJvZJoZBpxtwBD+EIP3uj8dJYf4YVpN5MOx0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
+
 <body class="animsition">
 
 	<!-- Header -->
@@ -60,15 +67,18 @@
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-                        @if(Auth::check())
-                            <a href="./account/logout" class="flex-c-m trans-04 p-lr-25">
-                                {{Auth::user()->name}} - Thoát
-                            </a>
-                        @else
-                            <a href="./account/login" class="flex-c-m trans-04 p-lr-25">
-                                Tài khoản
-                            </a>
-                        @endif
+						@if(Auth::check())
+						<img width="42" class="rounded-circle"
+							src="front1/img/user/{{Auth::user()->avatar ?? '_default-user.png'}}" alt="" style="width:30px;height:30px;margin-top:4px">
+
+						<a href="./account/logout" class="flex-c-m trans-04 p-lr-25" >
+							{{Auth::user()->name}} - Thoát
+						</a>
+						@else
+						<a href="./account/login" class="flex-c-m trans-04 p-lr-25">
+							Tài khoản
+						</a>
+						@endif
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							Vietnamese
 						</a>
@@ -101,20 +111,23 @@
 							</li>
 
 							<li>
-								<a href="blog.html">Tin tức</a>
+								<a href="./blog">Tin tức</a>
 							</li>
 
 							<li>
-								<a href="about.html">Liên hệ</a>
+								<a href="http://zaloapp.com/qr/p/2y8u7xidc3dj">Liên hệ</a>
 							</li>
 
 							<li>
 								<a href="contact.html">Cài đặt</a>
-                                <ul class="sub-menu">
-                                    <li><a href="./account/my-order">Đơn hàng</a></li>
-                                    <li><a href="">Tài khoản</a></li>
-                                    <li><a href="home-03.html">More ... </a></li>
-                                </ul>
+								<ul class="sub-menu">
+									<li><a href="./account/my-order">Đơn hàng</a></li>
+                                    <li><a href="{{ route('account.edit') }}">Tài khoản</a></li>
+
+
+
+									
+								</ul>
 							</li>
 						</ul>
 					</div>
@@ -125,9 +138,9 @@
 							<i class="zmdi zmdi-search"></i>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11  js-show-cart " >
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11  js-show-cart ">
 							<i class="zmdi zmdi-shopping-cart"></i>
-                            <span class="cart-count">{{Cart::count()}}</span>
+							<span class="cart-count">{{Cart::count()}}</span>
 						</div>
 
 						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 ">
@@ -237,207 +250,205 @@
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
-					<input name="search" value="{{request('search')}}" class="plh3" type="text" placeholder="Search...">
+					<input name="search" value="{{request('search')}}" class="plh3" type="text" placeholder="Tìm kiếm...">
 				</form>
 			</div>
 		</div>
 
 	</header>
 
-    <!-- Cart -->
-	<div class="wrap-header-cart js-panel-cart" >
+	<!-- Cart -->
+	<div class="wrap-header-cart js-panel-cart">
 		<div class="s-full js-hide-cart"></div>
 
-		<div class="header-cart "style="width: 400px" >
-            <div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2" style="margin-left: 10px" >
+		<div class="header-cart " style="width: 400px">
+			<div class="header-cart-title flex-w flex-sb-m p-b-8">
+				<span class="mtext-103 cl2" style="margin-left: 10px">
 					Giỏ hàng
 				</span>
 
-                <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart" style="float: right; margin-right: -140px">
-                    <i class="zmdi zmdi-close"></i>
-                </div>
-            </div>
-            <div class="cart-hover">
-                <div class="select-items">
-                    <table>
-                        <tbody>
-                        @foreach(Cart::content() as $cart)
-                        <tr data-rowId="{{$cart->rowId}}">
-                            <td class="si-pic"><img style="width:90px; height: 80px" src="front1/img/products/{{$cart->options->images[0]->path}}" alt=""></td>
-                            <td class="si-text">
-                                <div class="product-selected">
-                                    <p style="color: #deb217">    $ {{$cart->price}} x {{$cart->qty}}</p>
-                                    <h6 style="font-size: 19px">{{$cart->name}}</h6>
-                                </div>
-                            </td>
-                            <td class="si-close">
-                                <i style="cursor: pointer" onclick="removeCart('{{$cart->rowId}}')" class="ti-close"></i>
-                            </td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <div style="margin-top: 50px" class="select-total">
-                    <span style="font-size:20px;font-weight: 500;margin-left: 50px">Tổng :</span>
-                    <h5 style="font-size:20px;font-weight: 500;margin-left: 50px">${{Cart::total()}}</h5>
-                </div>
-                <div class="select-button">
-                    <a href="./cart" class="primary-btn view-card" style="margin-top: 10px;background: #0b0b0b; margin-left: 50px">Chi tiết</a>
-                    <a href="./checkout" class="primary-btn checkout-btn">Thanh toán</a>
-                </div>
-            </div>
+				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart" style="float: right; margin-right: -140px">
+					<i class="zmdi zmdi-close"></i>
+				</div>
+			</div>
+			<div class="cart-hover">
+				<div class="select-items">
+					<table>
+						<tbody>
+							@foreach(Cart::content() as $cart)
+							<tr data-rowId="{{$cart->rowId}}">
+								<td class="si-pic"><img style="width:150px; height: 80px" src="front1/img/products/{{$cart->options->images[0]->path}}" alt=""></td>
+								<td class="si-text">
+									<div class="product-selected">
+										<p style="color: #deb217;margin-right:20px"> {{ number_format($cart->price, 0, ',', '.') }}đ x {{$cart->qty}}</p>
+										<h6 style="font-size: 19px">{{$cart->name}}</h6>
+									</div>
+								</td>
+								<td class="si-close">
+									<i style="cursor: pointer" onclick="removeCart('{{$cart->rowId}}')" class="ti-close"></i>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+				</div>
+				<div style="margin-top: 50px" class="select-total">
+					<span style="font-size:20px;font-weight: 500;margin-left: 50px">Tổng :</span>
+					<h5 style="font-size:20px;font-weight: 500;margin-left: 50px">{{ number_format((float) str_replace(',', '', Cart::total()), 0, ',', '.') }}đ</h5>
+				</div>
+				<div class="select-button">
+					<a href="./cart" class="primary-btn view-card" style="margin-top: 10px;background: #0b0b0b; margin-left: 50px">Chi tiết</a>
+					<a href="./checkout" class="primary-btn checkout-btn">Thanh toán</a>
+				</div>
+			</div>
 		</div>
 	</div>
 
-   <!-- Body here -->
-   @yield('body')
+	<!-- Body here -->
+	@yield('body')
 
 	<!-- Footer -->
 	<footer class="bg3 p-t-75 p-b-32">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Categories
-					</h4>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-lg-3 p-b-50">
+				<h4 class="stext-301 cl0 p-b-30">
+					Danh mục
+				</h4>
 
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Women
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Men
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shoes
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Watches
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Help
-					</h4>
-
-					<ul>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Track Order
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Returns
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Shipping
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								FAQs
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						GET IN TOUCH
-					</h4>
-
-					<p class="stext-107 cl7 size-201">
-						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-					</p>
-
-					<div class="p-t-27">
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-facebook"></i>
+				<ul>
+					<li class="p-b-10">
+						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							Lego
 						</a>
+					</li>
 
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-instagram"></i>
+					<li class="p-b-10">
+						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							Gundam
 						</a>
+					</li>
 
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-pinterest-p"></i>
+					<li class="p-b-10">
+						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							Superhero
 						</a>
-					</div>
-				</div>
+					</li>
 
-				<div class="col-sm-6 col-lg-3 p-b-50">
-					<h4 class="stext-301 cl0 p-b-30">
-						Newsletter
-					</h4>
+					<li class="p-b-10">
+						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							Car
+						</a>
+					</li>
+				</ul>
+			</div>
 
-					<form>
-						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-							<div class="focus-input1 trans-04"></div>
-						</div>
+			<div class="col-sm-6 col-lg-3 p-b-50">
+				<h4 class="stext-301 cl0 p-b-30">
+					Hỗ trợ
+				</h4>
 
-						<div class="p-t-18">
-							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Subscribe
-							</button>
-						</div>
-					</form>
+				<ul>
+					<li class="p-b-10">
+						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							Kiểm tra đơn hàng
+						</a>
+					</li>
+
+					<li class="p-b-10">
+						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							Hoàn trả
+						</a>
+					</li>
+
+					<li class="p-b-10">
+						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							Vận chuyển
+						</a>
+					</li>
+
+					<li class="p-b-10">
+						<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							Câu hỏi thường gặp
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="col-sm-6 col-lg-3 p-b-50">
+				<h4 class="stext-301 cl0 p-b-30">
+					LIÊN HỆ
+				</h4>
+
+				<p class="stext-107 cl7 size-201">
+					Bạn có câu hỏi? Liên hệ với chúng tôi tại tầng 8, số 379 đường Trần Hưng Đạo, Hà Nội,  hoặc gọi (+1) 96 716 6879
+				</p>
+
+				<div class="p-t-27">
+					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<i class="fa fa-facebook"></i>
+					</a>
+
+					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<i class="fa fa-instagram"></i>
+					</a>
+
+					<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<i class="fa fa-pinterest-p"></i>
+					</a>
 				</div>
 			</div>
 
-			<div class="p-t-40">
-				<div class="flex-c-m flex-w p-b-18">
-					<a href="#" class="m-all-1">
-						<img src="front/images/icons/icon-pay-01.png" alt="ICON-PAY">
-					</a>
+			<div class="col-sm-6 col-lg-3 p-b-50">
+				<h4 class="stext-301 cl0 p-b-30">
+					Đăng ký nhận tin
+				</h4>
 
-					<a href="#" class="m-all-1">
-						<img src="front/images/icons/icon-pay-02.png" alt="ICON-PAY">
-					</a>
+				<form>
+					<div class="wrap-input1 w-full p-b-4">
+						<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@vidu.com">
+						<div class="focus-input1 trans-04"></div>
+					</div>
 
-					<a href="#" class="m-all-1">
-						<img src="front/images/icons/icon-pay-03.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="front/images/icons/icon-pay-04.png" alt="ICON-PAY">
-					</a>
-
-					<a href="#" class="m-all-1">
-						<img src="front/images/icons/icon-pay-05.png" alt="ICON-PAY">
-					</a>
-				</div>
-
-				<p class="stext-107 cl6 txt-center">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-				</p>
+					<div class="p-t-18">
+						<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+							Đăng ký
+						</button>
+					</div>
+				</form>
 			</div>
 		</div>
-	</footer>
+
+		<div class="p-t-40">
+			<div class="flex-c-m flex-w p-b-18">
+				<a href="#" class="m-all-1">
+					<img src="front/images/icons/icon-pay-01.png" alt="ICON-PAY">
+				</a>
+
+				<a href="#" class="m-all-1">
+					<img src="front/images/icons/icon-pay-02.png" alt="ICON-PAY">
+				</a>
+
+				<a href="#" class="m-all-1">
+					<img src="front/images/icons/icon-pay-03.png" alt="ICON-PAY">
+				</a>
+
+				<a href="#" class="m-all-1">
+					<img src="front/images/icons/icon-pay-04.png" alt="ICON-PAY">
+				</a>
+
+				<a href="#" class="m-all-1">
+					<img src="front/images/icons/icon-pay-05.png" alt="ICON-PAY">
+				</a>
+			</div>
+
+			<p class="stext-107 cl6 txt-center">
+			
+			</p>
+		</div>
+	</div>
+</footer>
+
 
 
 	<!-- Back to top -->
@@ -601,60 +612,62 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</div>
 
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="front/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="front/vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="front/vendor/bootstrap/js/popper.js"></script>
 	<script src="front/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="front/vendor/select2/select2.min.js"></script>
 	<script>
-		$(".js-select2").each(function(){
+		$(".js-select2").each(function() {
 			$(this).select2({
 				minimumResultsForSearch: 20,
 				dropdownParent: $(this).next('.dropDownSelect2')
 			});
 		})
 	</script>
-<!--===============================================================================================-->
+	
+	<!--===============================================================================================-->
 	<script src="front/vendor/daterangepicker/moment.min.js"></script>
 	<script src="front/vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="front/vendor/slick/slick.min.js"></script>
 	<script src="front/js/slick-custom.js"></script>
-<!--===============================================================================================-->
+	<script src="front/js/owlcarousel2-filter.min"></script>
+	<!--===============================================================================================-->
 	<script src="front/vendor/parallax100/parallax100.js"></script>
 	<script>
-        $('.parallax100').parallax100();
+		$('.parallax100').parallax100();
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="front/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
 	<script>
 		$('.gallery-lb').each(function() { // the containers for all your galleries
 			$(this).magnificPopup({
-		        delegate: 'a', // the selector for gallery item
-		        type: 'image',
-		        gallery: {
-		        	enabled:true
-		        },
-		        mainClass: 'mfp-fade'
-		    });
+				delegate: 'a', // the selector for gallery item
+				type: 'image',
+				gallery: {
+					enabled: true
+				},
+				mainClass: 'mfp-fade'
+			});
 		});
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="front/vendor/isotope/isotope.pkgd.min.js"></script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="front/vendor/sweetalert/sweetalert.min.js"></script>
 	<script>
-		$('.js-addwish-b2').on('click', function(e){
+		$('.js-addwish-b2').on('click', function(e) {
 			e.preventDefault();
 		});
 
-		$('.js-addwish-b2').each(function(){
+		$('.js-addwish-b2').each(function() {
 			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
+			$(this).on('click', function() {
 				swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-b2');
@@ -662,10 +675,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			});
 		});
 
-		$('.js-addwish-detail').each(function(){
+		$('.js-addwish-detail').each(function() {
 			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
-			$(this).on('click', function(){
+			$(this).on('click', function() {
 				swal(nameProduct, "is added to wishlist !", "success");
 
 				$(this).addClass('js-addedwish-detail');
@@ -675,44 +688,44 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 		/*---------------------------------------------*/
 
-		$('.js-addcart-detail').each(function(){
+		$('.js-addcart-detail').each(function() {
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function(){
+			$(this).on('click', function() {
 				swal(nameProduct, "is added to cart !", "success");
 			});
 		});
-
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	<script>
-		$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
+		$('.js-pscroll').each(function() {
+			$(this).css('position', 'relative');
+			$(this).css('overflow', 'hidden');
 			var ps = new PerfectScrollbar(this, {
 				wheelSpeed: 1,
 				scrollingThreshold: 1000,
 				wheelPropagation: false,
 			});
 
-			$(window).on('resize', function(){
+			$(window).on('resize', function() {
 				ps.update();
 			})
 		});
 	</script>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="front/js/main.js"></script>
-   <!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<script src="front1/js/jquery-3.3.1.min.js"></script>
-    <script src="front1/js/bootstrap.min.js"></script>
-    <script src="front1/js/jquery-ui.min.js"></script>
-    <script src="front1/js/jquery.countdown.min.js"></script>
-    <script src="front1/js/jquery.nice-select.min.js"></script>
-    <script src="front1/js/jquery.zoom.min.js"></script>
-    <script src="front1/js/jquery.dd.min.js"></script>
-    <script src="front1/js/jquery.slicknav.js"></script>
-    <script src="front1/js/owl.carousel.min.js"></script>
-    <script src="front1/js/main.js"></script>
+	<script src="front1/js/bootstrap.min.js"></script>
+	<script src="front1/js/jquery-ui.min.js"></script>
+	<script src="front1/js/jquery.countdown.min.js"></script>
+	<script src="front1/js/jquery.nice-select.min.js"></script>
+	<script src="front1/js/jquery.zoom.min.js"></script>
+	<script src="front1/js/jquery.dd.min.js"></script>
+	<script src="front1/js/jquery.slicknav.js"></script>
+	<script src="front1/js/owl.carousel.min.js"></script>
+	<script src="front1/js/main.js"></script>
 
 </body>
+
 </html>

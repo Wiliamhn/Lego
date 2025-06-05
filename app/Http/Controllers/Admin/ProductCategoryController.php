@@ -10,7 +10,8 @@ class ProductCategoryController extends Controller
 {
     private $productCategoryService;
 
-    public function __construct(ProductCategoryServiceInterface $productCategoryService) {
+    public function __construct(ProductCategoryServiceInterface $productCategoryService)
+    {
         $this->productCategoryService = $productCategoryService;
     }
     /**
@@ -21,7 +22,7 @@ class ProductCategoryController extends Controller
     public function index(Request $request)
     {
         $productCategories = $this->productCategoryService->searchAndPagination('name', $request->get('search'));
-        return view('admin.category.index',compact('productCategories'));
+        return view('admin.category.index', compact('productCategories'));
     }
 
     /**
@@ -31,7 +32,7 @@ class ProductCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -42,7 +43,10 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $this->productCategoryService->create($data);
+
+        return redirect('admin/category');
     }
 
     /**
@@ -64,7 +68,8 @@ class ProductCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $productCategory = $this->productCategoryService->find($id);
+        return view('admin.category.edit', compact('productCategory'));
     }
 
     /**
@@ -76,7 +81,9 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $this->productCategoryService->update($data, $id);
+        return redirect('admin/category');
     }
 
     /**
@@ -87,6 +94,7 @@ class ProductCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->productCategoryService->delete($id);
+        return redirect('admin/category');
     }
 }

@@ -88,7 +88,7 @@
                                             <label for="discount"
                                                 class="col-md-3 text-md-right col-form-label">Giảm giá</label>
                                             <div class="col-md-9 col-xl-8">
-                                                <input name="discount" id="discount" placeholder="Discount" type="text" class="form-control" value="{{$product->discount}}" required>
+                                                <input name="discount" id="discount" placeholder="Discount" type="text" class="form-control" value="{{$product->discount}}" >
                                             </div>
                                         </div>
 
